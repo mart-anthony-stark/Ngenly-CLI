@@ -1,13 +1,12 @@
 export default {
-  js: {
+  javascript: {
     express: {
-      db: {
-        none: {},
-        "mongodb (mongoose)": {},
-      },
+      none: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs",
+      "mongodb (mongoose)":
+        "https://github.com/mart-anthony-stark/Node-boilerplates#express-mongoose",
     },
   },
-  ts: {
+  typescript: {
     express: {
       db: {
         none: {},
