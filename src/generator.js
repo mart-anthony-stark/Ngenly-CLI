@@ -39,7 +39,7 @@ const questions = [
 const generateProject = () => {
   inquirer.prompt(questions).then(({ name, framework, lang, db }) => {
     let t = templates[lang][framework][db];
-    if (db === "mongodb (mongoose)") {
+    if (db !== "none") {
       inquirer
         .prompt([
           {
@@ -49,13 +49,12 @@ const generateProject = () => {
           },
         ])
         .then((ans) => {
-          if (ans.auth) {
-            t =
-              "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs-mongoose-auth";
-          }
+          t = templates[lang][framework][db][`${ans.auth ? "auth" : "noauth"}`];
           download(t, name);
         });
+      return;
     }
+    download(t, name);
   });
 };
 
