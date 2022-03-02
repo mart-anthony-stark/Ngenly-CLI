@@ -5,10 +5,10 @@ import Loader from "./loader.js";
 const log = console.log;
 const loader = new Loader();
 
-const download = async (templateLink, projName) => {
+const download = async (template, projName) => {
   loader.startLoading();
 
-  exec(`npx degit ${templateLink} ${projName}`, (error, stdout, output) => {
+  exec(`npx degit ${template.link} ${projName}`, (error, stdout, output) => {
     if (error) {
       throw error;
     }
