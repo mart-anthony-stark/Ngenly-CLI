@@ -2,6 +2,8 @@
 
 import colors from "colors";
 import inquirer from "inquirer";
+import templates from "./templates.js";
+import download from "./downloader.js";
 
 const questions = [
   {
@@ -27,7 +29,7 @@ const questions = [
     choices: ["javascript", "typescript"],
   },
   {
-    name: "template",
+    name: "db",
     type: "list",
     message: "What database do you want to use?",
     choices: ["none", "mongodb (mongoose)"],
@@ -35,8 +37,25 @@ const questions = [
 ];
 
 const generateProject = () => {
-  inquirer.prompt(questions).then((ans) => {
-    console.log(ans);
+  inquirer.prompt(questions).then(({ name, framework, lang, db }) => {
+    let t = templates[lang][framework][db];
+    if (db === "mongodb (mongoose)") {
+      inquirer
+        .prompt([
+          {
+            name: "auth",
+            type: "confirm",
+            message: "Do you want authentication functionalities? ",
+          },
+        ])
+        .then((ans) => {
+          if (ans.auth) {
+            t =
+              "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs-mongoose-auth";
+          }
+          download(t, name);
+        });
+    }
   });
 };
 
