@@ -1,21 +1,37 @@
 export default {
   javascript: {
     express: {
-      none: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs",
+      none: {
+        link: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs",
+        message: "",
+      },
       "mongodb (mongoose)": {
-        auth: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs-mongoose-auth",
-        noauth:
-          "https://github.com/mart-anthony-stark/Node-boilerplates#express-mongoose",
+        auth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs-mongoose-auth",
+          message: "",
+        },
+        noauth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-mongoose",
+          message: "",
+        },
       },
     },
   },
   typescript: {
     express: {
-      none: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts",
+      none: {
+        link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts",
+        message: "",
+      },
       "mongodb (mongoose)": {
-        auth: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mongoose-auth",
-        noauth:
-          "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mongoose",
+        auth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mongoose-auth",
+          message: "",
+        },
+        noauth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mongoose",
+          message: "",
+        },
       },
     },
   },
