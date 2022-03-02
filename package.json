@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A node js backend boilerplate cli",
   "main": "index.js",
+  "type": "module",
+  "bin":{
+    "ngenly": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +20,9 @@
     "typescript"
   ],
   "author": "Mart Salazar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.0"
+  }
 }
