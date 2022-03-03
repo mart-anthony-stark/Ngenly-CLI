@@ -32,7 +32,7 @@ const questions = [
     name: "db",
     type: "list",
     message: "What database do you want to use?",
-    choices: ["none", "mongodb (mongoose)"],
+    choices: ["none", "mongodb (mongoose)", "mysql"],
   },
 ];
 
