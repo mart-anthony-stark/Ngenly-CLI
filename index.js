@@ -7,7 +7,19 @@ const require = createRequire(import.meta.url);
 const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
 
+const greeting = ` _   _                  _       
+| \ | |                | |      
+|  \| | __ _  ___ _ __ | |_   _ 
+| . \` |/ _\` |/ _ \ '_ \| | | | |
+| |\  | (_| |  __/ | | | | |_| |
+\_| \_/\__, |\___|_| |_|_|\__, |
+        __/ |              __/ |
+       |___/              |___/ `;
+
 const flag = argv[2];
+
+console.log(greeting.yellow);
+
 if (flag === "-v" || flag === "--version") {
   console.log("Ngenly CLI version: ".red + version.cyan);
   console.log("Created by Mart Anthony Salazar".red);
