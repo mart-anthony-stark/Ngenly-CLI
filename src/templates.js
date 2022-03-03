@@ -15,6 +15,16 @@ export default {
           message: "",
         },
       },
+      mysql: {
+        auth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs-mysql",
+          message: "",
+        },
+        noauth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-mysql",
+          message: "",
+        },
+      },
     },
   },
   typescript: {
@@ -30,6 +40,16 @@ export default {
         },
         noauth: {
           link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mongoose",
+          message: "",
+        },
+      },
+      mysql: {
+        auth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mysql",
+          message: "",
+        },
+        noauth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-ts-mysql",
           message: "",
         },
       },
