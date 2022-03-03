@@ -16,8 +16,9 @@ if (flag === "-v" || flag === "--version") {
   generateProject();
 } else {
   console.log(`Unknown flag: ${flag}`.red);
-  console.log("ngenly [flag]".cyan);
-  console.log("-v             returns cli version".blue);
-  console.log("-version       returns cli version".blue);
-  console.log("-new           generates a new project".blue);
+  console.log("\nUsage: ".yellow + "ngenly [flag]".cyan);
+  console.log("Commands: ".yellow);
+  console.log("\tngenly new            generates a new project".blue);
+  console.log("\tngenly -v             returns cli version".blue);
+  console.log("\tngenly --version      returns cli version".blue);
 }
