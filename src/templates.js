@@ -21,7 +21,7 @@ export default {
           message: "",
         },
         noauth: {
-          link: "https://github.com/mart-anthony-stark/Node-boilerplates#express-mysql",
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#expressjs-mysql",
           message: "",
         },
       },
