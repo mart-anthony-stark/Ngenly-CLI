@@ -26,5 +26,5 @@ ngenly new
 - View the cli version
 
 ```console
-ngenly new
+ngenly -v
 ```
