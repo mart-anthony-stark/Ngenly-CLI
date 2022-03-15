@@ -26,6 +26,22 @@ export default {
         },
       },
     },
+    fastify: {
+      none: {
+        link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-js",
+        message: "",
+      },
+      "mongodb (mongoose)": {
+        auth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-js-mongoose",
+          message: "",
+        },
+        noauth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-js-mongoose",
+          message: "",
+        },
+      },
+    },
   },
   typescript: {
     express: {
