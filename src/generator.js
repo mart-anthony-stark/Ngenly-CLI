@@ -20,7 +20,7 @@ const questions = [
     name: "framework",
     type: "list",
     message: "What framework you want to use?",
-    choices: ["express"],
+    choices: ["express", "fastify"],
   },
   {
     name: "lang",
