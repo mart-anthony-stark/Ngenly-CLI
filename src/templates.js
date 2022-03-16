@@ -70,5 +70,21 @@ export default {
         },
       },
     },
+    fastify: {
+      none: {
+        link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-ts",
+        message: "",
+      },
+      "mongodb (mongoose)": {
+        auth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-ts",
+          message: "",
+        },
+        noauth: {
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-ts",
+          message: "",
+        },
+      },
+    },
   },
 };
