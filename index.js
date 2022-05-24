@@ -25,7 +25,16 @@ if (flag === "-v" || flag === "--version") {
   console.log("Created by Mart Anthony Salazar".red);
   console.log("https://github.com/mart-anthony-stark".cyan);
 } else if (flag === "new") {
+  // Generating new project
   generateProject();
+} else if (flag === "-g" || flag === "generate") {
+  if (!argv[3] || !argv[4] || !argv[5]) {
+    console.log("Invalid arguments.".red);
+    console.log(
+      "Usage: ngenly -g [crud] [library: express | fastify] [route_name]".yellow
+    );
+  } else {
+  }
 } else {
   console.log(`Unknown flag: ${flag}`.red);
   console.log("\nUsage: ".yellow + "ngenly [flag]".cyan);
