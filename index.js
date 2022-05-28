@@ -6,6 +6,8 @@ import colors from "colors";
 const require = createRequire(import.meta.url);
 const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
+// const generateCRUD = require('./crud/index.js')
+import generateCRUD from "./crud/index.js";
 
 const greeting = ` _   _                  _       
 | \ | |                | |      
@@ -34,6 +36,9 @@ if (flag === "-v" || flag === "--version") {
       "Usage: ngenly -g [crud] [library: express | fastify] [route_name]".yellow
     );
   } else {
+    if (argv[3] == "crud") {
+      generateCRUD(argv[4], argv[5]);
+    }
   }
 } else {
   console.log(`Unknown flag: ${flag}`.red);
