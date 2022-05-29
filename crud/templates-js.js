@@ -70,6 +70,11 @@ module.exports = {
 
     res.send(${name})
   },
+  // DELETE DATA
+  deleteOne: async (req, res) => {
+    const ${name} = await ${capitalName}.findByIdAndRemove(req.params.id);
+    res.send(${name});
+  },
 };
 `;
 };
