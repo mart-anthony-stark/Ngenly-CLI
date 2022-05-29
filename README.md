@@ -23,6 +23,11 @@ npm install -g ngenly
 ngenly new
 ```
 
+- Generate CRUD files
+```console
+ngenly -g crud [expressjs | expressts] [model_name]
+```
+
 - View the cli version
 
 ```console
