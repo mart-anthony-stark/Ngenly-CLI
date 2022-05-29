@@ -1,4 +1,5 @@
-export const routeTemplate = (name) => {
+// ROUTER TEMPLATE FOR EXPRESS.JS
+export const expressRouteTemplate = (name) => {
   return `
 const router = require("express").Router();
 const ${name.toLowerCase()}Controller = require("../controller/${name.toLowerCase()}.controller");
@@ -12,4 +13,30 @@ router.delete("/${name.toLowerCase()}/:id", ${name.toLowerCase()}Controller.dele
 module.exports = router;
 
 `;
+};
+
+// MONGOOSE MODEL TEMPLATE FOR EXPRESS.JS
+export const expressModelTemplate = (name) => {
+  return `const mongoose = require("mongoose");
+
+const ${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }Schema = new mongoose.Schema(
+{
+  // title: {
+  //   type: String,
+  //   required: true,
+  // },
+  // body: {
+  //   type: String,
+  //   required: true,
+  // },
+},
+{ timestamps: true }
+);
+
+module.exports = mongoose.model("${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }", ${name.charAt(0).toUpperCase() + name.slice(1)}Schema);
+  `;
 };
