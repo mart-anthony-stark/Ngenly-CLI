@@ -1,11 +1,12 @@
 import fs from "fs";
 import path from "path";
-import { expressRouteTemplate, expressModelTemplate } from "./templates.js";
+import { expressRouteTemplate, expressModelTemplate, expressControllerTemplate } from "./templates.js";
 
 const __dirname = path.resolve(path.dirname(""));
 const generateCRUD = (library, name) => {
   generateFile("route", name, expressRouteTemplate(name));
   generateFile("model", name, expressModelTemplate(name));
+  generateFile("controller", name, expressControllerTemplate(name));
 };
 
 const generateFile = (dir, name, content) => {
