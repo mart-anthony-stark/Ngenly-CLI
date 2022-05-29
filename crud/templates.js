@@ -40,3 +40,27 @@ module.exports = mongoose.model("${
   }", ${name.charAt(0).toUpperCase() + name.slice(1)}Schema);
   `;
 };
+
+// CONTROLLER TEMPLATE FOR EXPRESS.JS
+export const expressControllerTemplate = (name) => {
+  return `
+const ${name} = require("../models/${name}.model");
+
+module.exports = {
+  // GET ALL DATA
+  getAll: async (req, res) => {
+    const ${name.toLowerCase()}s = await ${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }.find();
+    res.send(${name.toLowerCase()}s);
+  },
+  // GET ONE DATA
+  getOne: async (req, res) => {
+    const ${name.toLowerCase()} = await ${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }.findOne({ _id: req.params.id });
+    res.send(${name.toLowerCase()})
+  },
+};
+`;
+};
