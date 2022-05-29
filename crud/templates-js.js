@@ -2,7 +2,7 @@
 export const expressRouteTemplate = (name) => {
   return `
 const router = require("express").Router();
-const ${name.toLowerCase()}Controller = require("../controller/${name.toLowerCase()}.controller");
+const ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerCase()}.controller");
 
 router.get("/${name.toLowerCase()}", ${name.toLowerCase()}Controller.getAll);
 router.get("/${name.toLowerCase()}/:id", ${name.toLowerCase()}Controller.getOne);
@@ -41,7 +41,7 @@ module.exports = mongoose.model("${
 // CONTROLLER TEMPLATE FOR EXPRESS.JS
 export const expressControllerTemplate = (name) => {
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
-  return `const ${name} = require("../models/${name}.model");
+  return `const ${name} = require("../models/${name.toLowerCase()}.model");
 
 module.exports = {
   // GET ALL DATA
@@ -62,18 +62,18 @@ module.exports = {
   },
   // UPDATE DATA
   updateOne: async (req, res) => {
-    const ${name} = await ${capitalName}.findOneAndUpdate(
+    const ${name.toLowerCase()} = await ${capitalName}.findOneAndUpdate(
       { _id: req.params.id },
       { $set: req.body },
       { new: true }
     );
 
-    res.send(${name})
+    res.send(${name.toLowerCase()})
   },
   // DELETE DATA
   deleteOne: async (req, res) => {
-    const ${name} = await ${capitalName}.findByIdAndRemove(req.params.id);
-    res.send(${name});
+    const ${name.toLowerCase()} = await ${capitalName}.findByIdAndRemove(req.params.id);
+    res.send(${name.toLowerCase()});
   },
 };
 `;
