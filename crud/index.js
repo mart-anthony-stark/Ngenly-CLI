@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
-import { expressRouteTemplate } from "./templates.js";
+import { expressRouteTemplate, expressModelTemplate } from "./templates.js";
 
 const __dirname = path.resolve(path.dirname(""));
 const generateCRUD = (library, name) => {
   generateFile("route", name, expressRouteTemplate(name));
+  generateFile("model", name, expressModelTemplate(name));
 };
 
 const generateFile = (dir, name, content) => {
@@ -12,9 +13,7 @@ const generateFile = (dir, name, content) => {
     if (err) throw err;
 
     fs.writeFile(
-      `${__dirname}/${dir}s/${
-        name.charAt(0).toUpperCase() + name.slice(1)
-      }.${dir}.js`,
+      `${__dirname}/${dir}s/${name.toLowerCase()}.${dir}.js`,
       content,
       function (err) {
         if (err) throw err;
