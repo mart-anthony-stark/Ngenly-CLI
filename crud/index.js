@@ -1,19 +1,21 @@
 import fs from "fs";
 import path from "path";
-import { routeTemplate } from "./templates.js"
+import { expressRouteTemplate } from "./templates.js";
 
 const __dirname = path.resolve(path.dirname(""));
 const generateCRUD = (library, name) => {
-    generateRoute(name)
+  generateFile("route", name, expressRouteTemplate(name));
 };
 
-const generateRoute = (name) => {
-  fs.mkdir(__dirname + "/routes", { recursive: true }, (err) => {
+const generateFile = (dir, name, content) => {
+  fs.mkdir(__dirname + `/${dir}s`, { recursive: true }, (err) => {
     if (err) throw err;
 
     fs.writeFile(
-      `${__dirname}/routes/${name.charAt(0).toUpperCase() + name.slice(1)}.route.js`,
-      routeTemplate(name),
+      `${__dirname}/${dir}s/${
+        name.charAt(0).toUpperCase() + name.slice(1)
+      }.${dir}.js`,
+      content,
       function (err) {
         if (err) throw err;
       }
