@@ -54,11 +54,22 @@ module.exports = {
     const ${name.toLowerCase()} = await ${capitalName}.findOne({ _id: req.params.id });
     res.send(${name.toLowerCase()})
   },
+  // CREATE DATA
   createOne: async (req,res) => {
     const new${capitalName} = new ${capitalName}(req.body)
     await new${capitalName}.save()
     res.send(new${capitalName})
-  }
+  },
+  // UPDATE DATA
+  updateOne: async (req, res) => {
+    const ${name} = await ${capitalName}.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: req.body },
+      { new: true }
+    );
+
+    res.send(${name})
+  },
 };
 `;
 };
