@@ -49,6 +49,7 @@ const generateFile = (dir, name, content, extension) => {
       content,
       function (err) {
         if (err) throw err;
+        console.log("CREATE".bgGreen + " " + name + " " + dir.toUpperCase().blue);
       }
     );
   });
