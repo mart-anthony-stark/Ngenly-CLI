@@ -32,6 +32,8 @@ const commandExecutions = {
 
 const execute = commandExecutions[flag];
 if (!execute) {
+  console.log(`Unknown flag: ${flag}`.red);
+  console.log("\nUsage: ".yellow + "ngenly [flag]".cyan);
   help();
 } else {
   execute();
