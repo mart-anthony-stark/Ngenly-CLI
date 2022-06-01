@@ -1,13 +1,16 @@
+#!/usr/bin/env node
+
+import { createRequire } from "module"; // Bring in the ability to create the 'require' method
+const require = createRequire(import.meta.url);
 import colors from "colors";
 import { argv } from "process";
 import generateCRUD from "../crud/index.js";
 import { generateMenu } from "../crud/menu.js";
+const pjson = require("../package.json");
 
 const flag = argv[2].toLowerCase();
 
 export const help = () => {
-  console.log(`Unknown flag: ${flag}`.red);
-  console.log("\nUsage: ".yellow + "ngenly [flag]".cyan);
   console.log("Commands: ".yellow);
   console.log(
     "\tngenly new".magenta +
@@ -32,7 +35,7 @@ export const help = () => {
 };
 
 export const versionCmd = () => {
-  console.log("Ngenly CLI version: ".red + version.cyan);
+  console.log("Ngenly CLI version: ".red + pjson.version.cyan);
   console.log("Created by Mart Anthony Salazar".red);
   console.log("https://github.com/mart-anthony-stark".cyan);
 };
