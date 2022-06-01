@@ -29,17 +29,18 @@ const generateCRUD = (library, name) => {
   const routeTemplate = templates[library]["route"];
   const modelTemplate = templates[library]["model"];
   const controllerTemplate = templates[library]["controller"];
-  generateFile("route", name, routeTemplate(name));
-  generateFile("model", name, modelTemplate(name));
-  generateFile("controller", name, controllerTemplate(name));
+  const ext = library.slice(library.length - 2);
+  generateFile("route", name, routeTemplate(name), ext);
+  generateFile("model", name, modelTemplate(name), ext);
+  generateFile("controller", name, controllerTemplate(name), ext);
 };
 
-const generateFile = (dir, name, content) => {
+const generateFile = (dir, name, content, extension) => {
   fs.mkdir(__dirname + `/${dir}s`, { recursive: true }, (err) => {
     if (err) throw err;
 
     fs.writeFile(
-      `${__dirname}/${dir}s/${name.toLowerCase()}.${dir}.js`,
+      `${__dirname}/${dir}s/${name.toLowerCase()}.${dir}.${extension}`,
       content,
       function (err) {
         if (err) throw err;
