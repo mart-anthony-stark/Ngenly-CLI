@@ -8,6 +8,7 @@ const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
 // const generateCRUD = require('./crud/index.js')
 import generateCRUD from "./crud/index.js";
+import { generateMenu } from "./crud/menu.js";
 
 const greeting = ` _   _                  _       
 | \ | |                | |      
@@ -30,7 +31,10 @@ if (flag === "-v" || flag === "--version") {
   // Generating new project
   generateProject();
 } else if (flag === "-g" || flag === "generate") {
-  if (!argv[3] || !argv[4] || !argv[5]) {
+  if (argv.length == 3) {
+    // Generate menu
+    generateMenu();
+  } else if (!argv[3] || !argv[4] || !argv[5]) {
     console.log("Invalid arguments.".red);
     console.log(
       "Usage: ngenly -g [crud] [library: express | fastify] [route_name]".yellow
