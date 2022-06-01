@@ -35,12 +35,22 @@ const generateCRUD = (library, name) => {
   const modelTemplate = templates[library]["model"];
   const controllerTemplate = templates[library]["controller"];
   const ext = library.slice(library.length - 2);
+
   generateFile("route", name, routeTemplate(name), ext);
   generateFile("model", name, modelTemplate(name), ext);
   generateFile("controller", name, controllerTemplate(name), ext);
-  addRouteToDocu(name, ext, library);
+  addRouteToMain(name, ext, library);
 };
 
+/**
+ *
+ * @param {String} dir
+ * @param {String} name
+ * @param {String} content
+ * @param {String} extension
+ *
+ * @description Generates a file and logs the details
+ */
 const generateFile = (dir, name, content, extension) => {
   fs.mkdir(__dirname + `/${dir}s`, { recursive: true }, (err) => {
     if (err) throw err;
@@ -51,20 +61,34 @@ const generateFile = (dir, name, content, extension) => {
       function (err) {
         if (err) throw err;
         console.log(
-          "CREATE".bgGreen + " " + name + " " + dir.toUpperCase().blue
+          "CREATE".bgGreen +
+            " " +
+            name +
+            " " +
+            dir.toUpperCase().blue +
+            " - " +
+            new Date().toISOString().yellow
         );
       }
     );
   });
 };
 
-const addRouteToDocu = (name, ext, library) => {
+/**
+ *
+ * @param {String} name
+ * @param {String} ext
+ * @param {String} library
+ *
+ * @description Adds the created router to app entry point middleware.
+ */
+const addRouteToMain = (name, ext, library) => {
   const mainAppendString = {
     expressjs: `app.use("/${name.toLowerCase()}", require("./routes/${name.toLowerCase()}.route"));`,
   };
   const filename = ext == "ts" ? "./src/app.ts" : "server.js";
-  fs.appendFile(filename, mainAppendString[library], ()=>{
-    console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue)
+  fs.appendFile(filename, mainAppendString[library], () => {
+    console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
   });
 };
 
