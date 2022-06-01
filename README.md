@@ -24,6 +24,7 @@ ngenly new
 ```
 
 - Generate CRUD files
+
 ```console
 ngenly -g crud [expressjs | expressts] [model_name]
 ```
@@ -33,3 +34,9 @@ ngenly -g crud [expressjs | expressts] [model_name]
 ```console
 ngenly -v
 ```
+
+- ngenly new = generates a new project
+- ngenly [-g | generate] = starts generating project or crud using menu
+- ngenly -v = returns cli version
+- ngenly --version = returns cli version
+- ngenly -g [crud] [library] [name] = generates crud files (Model, Controller, Router)
