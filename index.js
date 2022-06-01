@@ -48,7 +48,22 @@ if (flag === "-v" || flag === "--version") {
   console.log(`Unknown flag: ${flag}`.red);
   console.log("\nUsage: ".yellow + "ngenly [flag]".cyan);
   console.log("Commands: ".yellow);
-  console.log("\tngenly new            generates a new project".blue);
-  console.log("\tngenly -v             returns cli version".blue);
-  console.log("\tngenly --version      returns cli version".blue);
+  console.log(
+    "\tngenly new".magenta + "                           generates a new project".blue
+  );
+  console.log(
+    "\tngenly [-g | generate]".magenta +
+      "               starts generating project or crud using menu".blue
+  );
+  console.log(
+    "\tngenly -v".magenta + "                            returns cli version".blue
+  );
+  console.log(
+    "\tngenly --version".magenta +
+      "                     returns cli version".blue
+  );
+  console.log(
+    "\tngenly -g [crud] [library] [name]".magenta +
+      "    generates crud files (Model, Controller, Router)".blue
+  );
 }
