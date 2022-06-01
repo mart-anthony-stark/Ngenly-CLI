@@ -13,6 +13,11 @@ const templates = {
     model: expressModelTemplate,
     controller: expressControllerTemplate,
   },
+  expressts: {
+    route: expressRouteTemplate,
+    model: expressModelTemplate,
+    controller: expressControllerTemplate,
+  },
 };
 
 const __dirname = path.resolve(path.dirname(""));
