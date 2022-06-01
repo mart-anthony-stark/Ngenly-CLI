@@ -21,6 +21,13 @@ const templates = {
 };
 
 const __dirname = path.resolve(path.dirname(""));
+
+/**
+ * 
+ * @param {String} library 
+ * @param {String} name 
+ * @returns void
+ */
 const generateCRUD = (library, name) => {
   // CHECKS IF CRUD TEMPLATES FOR LIBRARY SELECTED IS VALID
   if (!templates[library]) {
@@ -40,6 +47,7 @@ const generateCRUD = (library, name) => {
   generateFile("model", name, modelTemplate(name), ext);
   generateFile("controller", name, controllerTemplate(name), ext);
   addRouteToMain(name, ext, library);
+  addRoutesToDocumentation(name)
 };
 
 /**
@@ -89,6 +97,21 @@ const addRouteToMain = (name, ext, library) => {
   const filename = ext == "ts" ? "./src/app.ts" : "server.js";
   fs.appendFile(filename, mainAppendString[library], () => {
     console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
+  });
+};
+
+const addRoutesToDocumentation = (name) => {
+  const routesDocu = `## ${name} routes
+- GET      = /${name}
+- GET      = /${name}/:id
+- POST     = /${name}
+- PUT      = /${name}/:id
+- DELETE   = /${name}/:id`;
+
+  fs.appendFile("README.md", routesDocu, () => {
+    console.log(
+      "APPEND".bgBlue + " " + name + " " + "ROUTE DOCUMENTATION".blue
+    );
   });
 };
 
