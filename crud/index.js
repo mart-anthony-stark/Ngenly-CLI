@@ -38,6 +38,7 @@ const generateCRUD = (library, name) => {
   generateFile("route", name, routeTemplate(name), ext);
   generateFile("model", name, modelTemplate(name), ext);
   generateFile("controller", name, controllerTemplate(name), ext);
+  addRouteToDocu(name, ext, library);
 };
 
 const generateFile = (dir, name, content, extension) => {
@@ -49,9 +50,21 @@ const generateFile = (dir, name, content, extension) => {
       content,
       function (err) {
         if (err) throw err;
-        console.log("CREATE".bgGreen + " " + name + " " + dir.toUpperCase().blue);
+        console.log(
+          "CREATE".bgGreen + " " + name + " " + dir.toUpperCase().blue
+        );
       }
     );
+  });
+};
+
+const addRouteToDocu = (name, ext, library) => {
+  const mainAppendString = {
+    expressjs: `app.use("/${name.toLowerCase()}", require("./routes/${name.toLowerCase()}.route"));`,
+  };
+  const filename = ext == "ts" ? "./src/app.ts" : "server.js";
+  fs.appendFile(filename, mainAppendString[library], ()=>{
+    console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue)
   });
 };
 
