@@ -57,7 +57,7 @@ export const expressTSControllerTemplate = (name) => {
       res.send(${name.toLowerCase()})
     },
     // CREATE DATA
-    createOne: async (req:Request,res):Response => {
+    createOne: async (req:Request,res:Response) => {
       const new${capitalName} = new ${capitalName}(req.body)
       await new${capitalName}.save()
       res.send(new${capitalName})
