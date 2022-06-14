@@ -110,7 +110,9 @@ const addRouteToMain = (name, ext, library) => {
 };
 
 const addRoutesToDocumentation = (name) => {
-  const routesDocu = `## ${name} routes
+  const routesDocu = `
+  
+## ${name} routes
 - GET      = /${name}
 - GET      = /${name}/:id
 - POST     = /${name}
