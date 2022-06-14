@@ -103,7 +103,7 @@ const addRouteToMain = (name, ext, library) => {
     import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
     app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
   };
-  const filename = ext == "ts" ? "./src/app.ts" : "server.js";
+  const filename = ext == "ts" ? "app.ts" : "server.js";
   fs.appendFile(filename, mainAppendString[library], () => {
     console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
   });
