@@ -5,6 +5,12 @@ import {
   expressModelTemplate,
   expressControllerTemplate,
 } from "./templates-js.js";
+
+import {
+  expressTSControllerTemplate,
+  expressTSModelTemplate,
+  expressTSRouteTemplate,
+} from "./templates-ts.js";
 import colors from "colors";
 
 const templates = {
@@ -14,18 +20,18 @@ const templates = {
     controller: expressControllerTemplate,
   },
   expressts: {
-    route: expressRouteTemplate,
-    model: expressModelTemplate,
-    controller: expressControllerTemplate,
+    route: expressTSRouteTemplate,
+    model: expressTSModelTemplate,
+    controller: expressTSControllerTemplate,
   },
 };
 
 const __dirname = path.resolve(path.dirname(""));
 
 /**
- * 
- * @param {String} library 
- * @param {String} name 
+ *
+ * @param {String} library
+ * @param {String} name
  * @returns void
  */
 const generateCRUD = (library, name) => {
@@ -47,7 +53,7 @@ const generateCRUD = (library, name) => {
   generateFile("model", name, modelTemplate(name), ext);
   generateFile("controller", name, controllerTemplate(name), ext);
   addRouteToMain(name, ext, library);
-  addRoutesToDocumentation(name)
+  addRoutesToDocumentation(name);
 };
 
 /**
@@ -93,6 +99,9 @@ const generateFile = (dir, name, content, extension) => {
 const addRouteToMain = (name, ext, library) => {
   const mainAppendString = {
     expressjs: `app.use("/${name.toLowerCase()}", require("./routes/${name.toLowerCase()}.route"));`,
+    expressts: `
+    import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
+    app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
   };
   const filename = ext == "ts" ? "./src/app.ts" : "server.js";
   fs.appendFile(filename, mainAppendString[library], () => {
