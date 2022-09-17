@@ -16,7 +16,7 @@ const greeting = ` _   _                  _
         __/ |              __/ |
        |___/              |___/ `;
 
-const flag = argv[2].toLowerCase();
+const flag = !argv[2] ? "-h" : argv[2].toLowerCase();
 
 console.log(greeting.yellow);
 
