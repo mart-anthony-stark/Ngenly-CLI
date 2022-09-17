@@ -8,8 +8,6 @@ import generateCRUD from "../crud/index.js";
 import { generateMenu } from "../crud/menu.js";
 const pjson = require("../package.json");
 
-const flag = argv[2].toLowerCase();
-
 export const help = () => {
   console.log("Commands: ".yellow);
   console.log(
