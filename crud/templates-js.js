@@ -46,12 +46,12 @@ export const expressControllerTemplate = (name) => {
 module.exports = {
   // GET ALL DATA
   getAll: async (req, res) => {
-    const ${name.toLowerCase()}s = await ${capitalName}.find();
+    const ${name.toLowerCase()}s = await ${capitalName}.find().lean();
     res.send(${name.toLowerCase()}s);
   },
   // GET ONE DATA
   getOne: async (req, res) => {
-    const ${name.toLowerCase()} = await ${capitalName}.findOne({ _id: req.params.id });
+    const ${name.toLowerCase()} = await ${capitalName}.findOne({ _id: req.params.id }).lean();
     res.send(${name.toLowerCase()})
   },
   // CREATE DATA
