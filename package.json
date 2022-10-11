@@ -1,6 +1,6 @@
 {
   "name": "ngenly",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "A node js backend boilerplate cli",
   "main": "index.js",
   "type": "module",
