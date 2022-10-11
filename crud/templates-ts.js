@@ -4,7 +4,7 @@ export const expressTSRouteTemplate = (name) => {
 const ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerCase()}.controller");
 const router = Router();
 
-router.get("/}", ${name.toLowerCase()}Controller.getAll);
+router.get("/", ${name.toLowerCase()}Controller.getAll);
 router.get("/:id", ${name.toLowerCase()}Controller.getOne);
 router.post("/", ${name.toLowerCase()}Controller.createOne);
 router.put("/:id", ${name.toLowerCase()}Controller.updateOne);
