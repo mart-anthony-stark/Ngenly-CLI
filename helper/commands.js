@@ -9,7 +9,7 @@ import { generateMenu } from "../crud/menu.js";
 const pjson = require("../package.json");
 
 export const help = () => {
-  console.log("Commands: ".yellow);
+  console.log("\nCommands: ".yellow);
   console.log(
     "\tngenly new".magenta +
       "                           generates a new project".blue
