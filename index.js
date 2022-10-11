@@ -12,9 +12,11 @@ const greeting = ` _   _                  _
 |  \| | __ _  ___ _ __ | |_   _ 
 | . \` |/ _\` |/ _ \ '_ \| | | | |
 | |\  | (_| |  __/ | | | | |_| |
-\_| \_/\__, |\___|_| |_|_|\__, |
+|\_| \_/\__, |\___|_| |_|_|\__, |
         __/ |              __/ |
-       |___/              |___/ `;
+       |___/              |___/  ${`v${version}`.green}
+${"Node API template and CRUD generator".green}
+made with 💗 by Mart Salazar       `;
 
 const flag = !argv[2] ? "-h" : argv[2].toLowerCase();
 
