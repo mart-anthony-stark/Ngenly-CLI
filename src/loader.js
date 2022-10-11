@@ -10,7 +10,7 @@ class Loader {
     let x = 0;
     this.loading = setInterval(() => {
       process.stdout.write(
-        "  Downloading Template...".cyan + "\r" + P[x++].red + "   "
+        "  Creating Project Boilerplate...".cyan + "\r" + P[x++].red + "   "
       );
       x &= 3;
     }, 50);
