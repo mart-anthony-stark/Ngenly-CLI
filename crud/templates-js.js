@@ -4,11 +4,11 @@ export const expressRouteTemplate = (name) => {
 const router = require("express").Router();
 const ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerCase()}.controller");
 
-router.get("/${name.toLowerCase()}", ${name.toLowerCase()}Controller.getAll);
-router.get("/${name.toLowerCase()}/:id", ${name.toLowerCase()}Controller.getOne);
-router.post("/${name.toLowerCase()}", ${name.toLowerCase()}Controller.createOne);
-router.put("/${name.toLowerCase()}/:id", ${name.toLowerCase()}Controller.updateOne);
-router.delete("/${name.toLowerCase()}/:id", ${name.toLowerCase()}Controller.deleteOne);
+router.get("/", ${name.toLowerCase()}Controller.getAll);
+router.get("/:id", ${name.toLowerCase()}Controller.getOne);
+router.post("/", ${name.toLowerCase()}Controller.createOne);
+router.put("/:id", ${name.toLowerCase()}Controller.updateOne);
+router.delete("/:id", ${name.toLowerCase()}Controller.deleteOne);
 
 module.exports = router;`;
 };
