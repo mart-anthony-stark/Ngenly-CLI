@@ -41,7 +41,7 @@ module.exports = mongoose.model("${
 // CONTROLLER TEMPLATE FOR EXPRESS.JS
 export const expressControllerTemplate = (name) => {
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
-  return `const ${name} = require("../models/${name.toLowerCase()}.model");
+  return `const ${capitalName} = require("../models/${name.toLowerCase()}.model");
 
 module.exports = {
   // GET ALL DATA
