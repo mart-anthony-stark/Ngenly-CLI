@@ -3,6 +3,7 @@ export const expressRouteTemplate = (name) => {
   return `
 const router = require("express").Router();
 const ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerCase()}.controller");
+const {catcher} = require("../utils")
 
 router.get("/", ${name.toLowerCase()}Controller.getAll);
 router.get("/:id", ${name.toLowerCase()}Controller.getOne);
