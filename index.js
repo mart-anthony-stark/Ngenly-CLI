@@ -7,7 +7,7 @@ const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
 import { generateCmd, help, versionCmd } from "./helper/commands.js";
 
-const greeting = ` _   _                  _       
+export const greeting = ` _   _                  _       
 | \ | |                | |      
 |  \| | __ _  ___ _ __ | |_   _ 
 | . \` |/ _\` |/ _ \ '_ \| | | | |
@@ -20,16 +20,16 @@ made with 💗 by Mart Salazar       `;
 
 const flag = !argv[2] ? "-h" : argv[2].toLowerCase();
 
-console.log(greeting.yellow);
+// console.log(greeting.yellow);
 
 const commandExecutions = {
-  version: versionCmd,
+  "--version": versionCmd,
   "-v": versionCmd,
   new: generateProject,
   "-n": generateProject,
   "-g": generateCmd,
   "-h": help,
-  help: help,
+  "--help": help,
 };
 
 const execute = commandExecutions[flag];
