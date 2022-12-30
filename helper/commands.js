@@ -33,9 +33,7 @@ export const help = () => {
 };
 
 export const versionCmd = () => {
-  console.log("Ngenly CLI version: ".red + pjson.version.cyan);
-  console.log("Created by Mart Anthony Salazar".red);
-  console.log("https://github.com/mart-anthony-stark".cyan);
+  console.log(pjson.version.cyan);
 };
 
 export const generateCmd = () => {
