@@ -4,6 +4,7 @@ import colors from "colors";
 import inquirer from "inquirer";
 import templates from "./templates.js";
 import download from "./downloader.js";
+import { greeting } from "../index.js";
 
 const questions = [
   {
@@ -37,6 +38,7 @@ const questions = [
 ];
 
 const generateProject = () => {
+  console.log(greeting)
   inquirer.prompt(questions).then(({ name, framework, lang, db }) => {
     let t = templates[lang][framework][db];
     if (db !== "none") {
