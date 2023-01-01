@@ -53,9 +53,8 @@ const generateCRUD =async (library, name, isAuto) => {
   const ext = library.slice(library.length - 2);
 
   // Generate files
-  loader.startLoading()
   generateFile("route", name, routeTemplate(name), ext);
-
+  
   // Check if arg automatic schema generation
   if(isAuto){
     const modelTxt = await createModel(name);
@@ -68,7 +67,6 @@ const generateCRUD =async (library, name, isAuto) => {
   addRouteToMain(name, ext, library);
   addRoutesToDocumentation(name);
 
-  loader.stopLoading()
 };
 
 /**
