@@ -9,7 +9,7 @@ export const createModel = async (schemaName)=>{
           'X-RapidAPI-Key': '6beb7eba69msh0e9a5664feff189p18af5ejsn08f8c1ca38ae',
           'X-RapidAPI-Host': 'ai-text-to-code-generation.p.rapidapi.com'
         },
-        data: `{"input":"mongoose model for ${schemaName} schema"}`
+        data: `{"input":"mongoose model for ${schemaName} schema and export it"}`
       };
 
     axios.request(options).then(function (response) {
