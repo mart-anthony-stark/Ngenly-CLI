@@ -47,7 +47,8 @@ export const generateCmd = () => {
     );
   } else {
     if (argv[3] == "crud") {
-      generateCRUD(argv[4], argv[5]);
+      const isAuto = (typeof argv[6] !== 'undefined' && argv[6]==="--auto")
+      generateCRUD(argv[4], argv[5], isAuto);
     }
   }
 };
