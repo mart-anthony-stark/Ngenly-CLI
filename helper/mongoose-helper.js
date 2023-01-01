@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const createModel = async (schemaName)=>{
+  try {
     const options = {
         method: 'POST',
         url: 'https://ai-text-to-code-generation.p.rapidapi.com/generate',
@@ -12,11 +13,10 @@ export const createModel = async (schemaName)=>{
         data: `{"input":"mongoose model for ${schemaName} schema and export it"}`
       };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
+    const res = await axios.request(options)
+    return res.data?.message
+    
+  } catch (error) {
+    console.error(error)
+  }
 }
-
-createModel("Teacher")
