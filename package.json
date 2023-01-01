@@ -26,6 +26,7 @@
   "author": "Mart Salazar",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.2.2",
     "colors": "^1.4.0",
     "inquirer": "^8.2.0"
   }
