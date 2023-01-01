@@ -12,7 +12,10 @@ import {
   expressTSRouteTemplate,
 } from "./templates-ts.js";
 import colors from "colors";
+import { createModel } from "../helper/mongoose-helper.js";
+import Loader from "../src/loader.js";
 
+const loader = new Loader()
 const templates = {
   expressjs: {
     route: expressRouteTemplate,
@@ -34,7 +37,7 @@ const __dirname = path.resolve(path.dirname(""));
  * @param {String} name
  * @returns void
  */
-const generateCRUD = (library, name) => {
+const generateCRUD =async (library, name, isAuto) => {
   // CHECKS IF CRUD TEMPLATES FOR LIBRARY SELECTED IS VALID
   if (!templates[library]) {
     console.log("Invalid library selection".red);
@@ -49,11 +52,23 @@ const generateCRUD = (library, name) => {
   const controllerTemplate = templates[library]["controller"];
   const ext = library.slice(library.length - 2);
 
+  // Generate files
+  loader.startLoading()
   generateFile("route", name, routeTemplate(name), ext);
-  generateFile("model", name, modelTemplate(name), ext);
+
+  // Check if arg automatic schema generation
+  if(isAuto){
+    const modelTxt = await createModel(name);
+    generateFile("model", name, modelTxt, ext);
+  }else{
+    generateFile("model", name, modelTemplate(name), ext);
+  }
+
   generateFile("controller", name, controllerTemplate(name), ext);
   addRouteToMain(name, ext, library);
   addRoutesToDocumentation(name);
+
+  loader.stopLoading()
 };
 
 /**
