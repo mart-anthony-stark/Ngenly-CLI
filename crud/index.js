@@ -14,6 +14,7 @@ import {
 import colors from "colors";
 import { createModel } from "../helper/mongoose-helper.js";
 import Loader from "../src/loader.js";
+import { greeting } from "../index.js";
 
 const loader = new Loader()
 const templates = {
@@ -46,6 +47,8 @@ const generateCRUD =async (library, name, isAuto) => {
     console.log("\t- expressts".blue);
     return;
   }
+
+  console.log(greeting.yellow)
 
   const routeTemplate = templates[library]["route"];
   const modelTemplate = templates[library]["model"];
