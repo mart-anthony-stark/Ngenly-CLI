@@ -28,6 +28,7 @@ const commandExecutions = {
   new: generateProject,
   "-n": generateProject,
   "-g": generateCmd,
+  "--generate": generateCmd,
   "-h": help,
   "--help": help,
 };
