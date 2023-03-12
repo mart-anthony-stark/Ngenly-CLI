@@ -82,11 +82,18 @@ const generateCRUD =async (library, name, isAuto) => {
  * @description Generates a file and logs the details
  */
 const generateFile = (dir, name, content, extension) => {
-  fs.mkdir(__dirname + `/${dir}s`, { recursive: true }, (err) => {
+  // Directory mapping for each ext (js/ts)
+  const dirMap = {
+    js: dir,
+    ts: `src/${dir}`
+  }
+  const dirToBeCreated = __dirname + `/${dirMap[extension]}s`
+
+  fs.mkdir(dirToBeCreated, { recursive: true }, (err) => {
     if (err) throw err;
 
     fs.writeFile(
-      `${__dirname}/${dir}s/${name.toLowerCase()}.${dir}.${extension}`,
+      `${dirToBeCreated}/${name.toLowerCase()}.${dir}.${extension}`,
       content,
       function (err) {
         if (err) throw err;
@@ -116,10 +123,10 @@ const addRouteToMain = (name, ext, library) => {
   const mainAppendString = {
     expressjs: `app.use("/${name.toLowerCase()}", require("./routes/${name.toLowerCase()}.route"));`,
     expressts: `
-    import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
-    app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
+import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
+app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
   };
-  const filename = ext == "ts" ? "app.ts" : "server.js";
+  const filename = ext == "ts" ? "./src/app.ts" : "server.js";
   fs.appendFile(filename, mainAppendString[library], () => {
     console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
   });
