@@ -123,5 +123,41 @@ module.exports = mongoose.model("${
 
 // CONTROLLER TEMPLATE FOR FASTIFY.JS
 export const fastifyControllerTemplate = (name) => {
-  return ``;
+  const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+  return `const ${capitalName} = require("../models/${name.toLowerCase()}.model");
+    
+    module.exports = {
+      // GET ALL DATA
+      getAll: async (req, reply) => {
+        const ${name.toLowerCase()}s = await ${capitalName}.find().lean();
+        reply.send(${name.toLowerCase()}s);
+      },
+      // GET ONE DATA
+      getOne: async (req, reply) => {
+        const ${name.toLowerCase()} = await ${capitalName}.findOne({ _id: req.params.id }).lean();
+        reply.send(${name.toLowerCase()})
+      },
+      // CREATE DATA
+      createOne: async (req,reply) => {
+        const new${capitalName} = new ${capitalName}(req.body)
+        await new${capitalName}.save()
+        reply.send(new${capitalName})
+      },
+      // UPDATE DATA
+      updateOne: async (req, reply) => {
+        const ${name.toLowerCase()} = await ${capitalName}.findOneAndUpdate(
+          { _id: req.params.id },
+          { $set: req.body },
+          { new: true }
+        );
+    
+        reply.send(${name.toLowerCase()})
+      },
+      // DELETE DATA
+      deleteOne: async (req, reply) => {
+        const ${name.toLowerCase()} = await ${capitalName}.findByIdAndRemove(req.params.id);
+        reply.send(${name.toLowerCase()});
+      },
+    };
+    `;
 };
