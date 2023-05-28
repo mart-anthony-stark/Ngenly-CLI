@@ -133,11 +133,22 @@ const addRouteToMain = (name, ext, library) => {
     expressts: `
 import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
 app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
+    fastifyjs: `
+    app.register(require("./routes/${name.toLowerCase()}.route"), { prefix: "/${name.toLowerCase()}" });
+    `,
   };
-  const filename = ext == "ts" ? "./src/app.ts" : "server.js";
-  fs.appendFile(filename, mainAppendString[library], () => {
-    console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
-  });
+
+  let filename = ext == "ts" ? "./src/app.ts" : "server.js";
+  if (library === "fastifyjs") {
+    // FASTIFY JS - INDEX.JS
+    fs.appendFile("index.js", mainAppendString[library], () => {
+      console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
+    });
+  } else {
+    fs.appendFile(filename, mainAppendString[library], () => {
+      console.log("APPEND".bgBlue + " " + name + " " + "ROUTE".blue);
+    });
+  }
 };
 
 const addRoutesToDocumentation = (name) => {
