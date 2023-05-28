@@ -4,6 +4,9 @@ import {
   expressRouteTemplate,
   expressModelTemplate,
   expressControllerTemplate,
+  fastifyjsRouteTemplate,
+  fastifyjsModelTemplate,
+  fastifyControllerTemplate,
 } from "./templates-js.js";
 
 import {
@@ -16,7 +19,7 @@ import { createModel } from "../helper/mongoose-helper.js";
 import Loader from "../src/loader.js";
 import { greeting } from "../index.js";
 
-const loader = new Loader()
+const loader = new Loader();
 const templates = {
   expressjs: {
     route: expressRouteTemplate,
@@ -28,6 +31,11 @@ const templates = {
     model: expressTSModelTemplate,
     controller: expressTSControllerTemplate,
   },
+  fastifyjs: {
+    route: fastifyjsRouteTemplate,
+    model: fastifyjsModelTemplate,
+    controller: fastifyControllerTemplate,
+  },
 };
 
 const __dirname = path.resolve(path.dirname(""));
@@ -38,17 +46,18 @@ const __dirname = path.resolve(path.dirname(""));
  * @param {String} name
  * @returns void
  */
-const generateCRUD =async (library, name, isAuto) => {
+const generateCRUD = async (library, name, isAuto) => {
   // CHECKS IF CRUD TEMPLATES FOR LIBRARY SELECTED IS VALID
   if (!templates[library]) {
     console.log("Invalid library selection".red);
     console.log("Available library templates:".green);
     console.log("\t- expressjs".blue);
     console.log("\t- expressts".blue);
+    console.log("\t- fastifyjs".blue);
     return;
   }
 
-  console.log(greeting.yellow)
+  console.log(greeting.yellow);
 
   const routeTemplate = templates[library]["route"];
   const modelTemplate = templates[library]["model"];
@@ -57,19 +66,18 @@ const generateCRUD =async (library, name, isAuto) => {
 
   // Generate files
   generateFile("route", name, routeTemplate(name), ext);
-  
+
   // Check if arg automatic schema generation
-  if(isAuto){
+  if (isAuto) {
     const modelTxt = await createModel(name);
     generateFile("model", name, modelTxt, ext);
-  }else{
+  } else {
     generateFile("model", name, modelTemplate(name), ext);
   }
 
   generateFile("controller", name, controllerTemplate(name), ext);
   addRouteToMain(name, ext, library);
   addRoutesToDocumentation(name);
-
 };
 
 /**
@@ -85,9 +93,9 @@ const generateFile = (dir, name, content, extension) => {
   // Directory mapping for each ext (js/ts)
   const dirMap = {
     js: dir,
-    ts: `src/${dir}`
-  }
-  const dirToBeCreated = __dirname + `/${dirMap[extension]}s`
+    ts: `src/${dir}`,
+  };
+  const dirToBeCreated = __dirname + `/${dirMap[extension]}s`;
 
   fs.mkdir(dirToBeCreated, { recursive: true }, (err) => {
     if (err) throw err;
