@@ -88,7 +88,7 @@ const  ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerC
 
 module.exports = function (fastify, opts, done) {
   fastify.get("/",  ${name.toLowerCase()}Controller.getAll);
-  fastify.get("/",  ${name.toLowerCase()}Controller.getOne);
+  fastify.get("/:id",  ${name.toLowerCase()}Controller.getOne);
   fastify.post("/", ${name.toLowerCase()}Controller.createOne);
   fastify.put("/:id", ${name.toLowerCase()}Controller.updateOne);
   fastify.delete("/:id", ${name.toLowerCase()}Controller.deleteOne);
