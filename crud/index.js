@@ -134,7 +134,7 @@ const addRouteToMain = (name, ext, library) => {
 import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
 app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
     fastifyjs: `
-    app.register(require("./routes/${name.toLowerCase()}.route"), { prefix: "/${name.toLowerCase()}" });
+    fastify.register(require("./routes/${name.toLowerCase()}.route"), { prefix: "/${name.toLowerCase()}" });
     `,
   };
 
