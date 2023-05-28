@@ -33,7 +33,7 @@ export default {
       },
       "mongodb (mongoose)": {
         auth: {
-          link: "https://github.com/mart-anthony-stark/Node-boilerplates#fastify-js-mongoose",
+          link: "https://github.com/mart-anthony-stark/Node-boilerplates#'fastify-js-mongoose-auth'",
           message: "",
         },
         noauth: {
