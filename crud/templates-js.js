@@ -79,3 +79,49 @@ module.exports = {
 };
 `;
 };
+
+// ------------FASTIFY---------------
+// ROUTER TEMPLATE FOR FASTIFY.JS
+export const fastifyjsRouteTemplate = (name) => {
+  return `
+const  ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerCase()}.controller");
+
+module.exports = function (fastify, opts, done) {
+  fastify.get("/",  ${name.toLowerCase()}Controller.getAll);
+  fastify.get("/",  ${name.toLowerCase()}Controller.getOne);
+  fastify.post("/", ${name.toLowerCase()}Controller.createOne);
+  fastify.put("/:id", ${name.toLowerCase()}Controller.updateOne);
+  fastify.delete("/:id", ${name.toLowerCase()}Controller.deleteOne);
+  done();
+};
+`;
+};
+// MONGOOSE MODEL TEMPLATE FOR FASTIFY.JS
+export const fastifyjsModelTemplate = (name) => {
+  return `const mongoose = require("mongoose");
+
+const ${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }Schema = new mongoose.Schema(
+    {
+      // title: {
+      //   type: String,
+      //   required: true,
+      // },
+      // body: {
+      //   type: String,
+      //   required: true,
+      // },
+    },
+    { timestamps: true }
+  );
+
+module.exports = mongoose.model("${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }", ${name.charAt(0).toUpperCase() + name.slice(1)}Schema);`;
+};
+
+// CONTROLLER TEMPLATE FOR FASTIFY.JS
+export const fastifyControllerTemplate = (name) => {
+  return ``;
+};
