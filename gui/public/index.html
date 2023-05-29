@@ -10,13 +10,32 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <style>
+      .welcome-banner {
+        background-color: #007bff;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        font-family: "Pacifico", cursive;
+      }
+
+      .banner-title {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+
+      .banner-description {
+        font-size: 20px;
+        margin-bottom: 0;
+      }
+    </style>
 
     <title>Ngenly CRUD Generator</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-primary">
       <div class="container-fluid">
-        <a class="navbar-brand text-white" href="#">Ngenly</a>
+        <a class="navbar-brand text-white" href="/">Ngenly</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -31,7 +50,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link bg-white active" aria-current="page" href="#"
+              <a class="nav-link bg-white active" aria-current="page" href="/"
                 >Project</a
               >
             </li>
@@ -48,6 +67,10 @@
         </div>
       </div>
     </nav>
+    <div class="welcome-banner">
+      <h1 class="banner-title">Ngenly</h1>
+      <p class="banner-description">Discover the possibilities!</p>
+    </div>
 
     <div class="main px-3 py-3">
       <h3>Create new Project</h3>
