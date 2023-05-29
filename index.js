@@ -6,7 +6,6 @@ const require = createRequire(import.meta.url);
 const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
 import { generateCmd, help, versionCmd } from "./helper/commands.js";
-import { startGUIserver } from "./gui/index.js";
 
 export const greeting = ` _   _                  _       
 | \ | |                | |      
@@ -19,9 +18,12 @@ export const greeting = ` _   _                  _
 ${"Node API template and CRUD generator".green}
 made with 💗 by Mart Salazar       `;
 
-const flag = !argv[2] ? "-h" : argv[2].toLowerCase();
+const flag = !argv[2] ? "--gui" : argv[2].toLowerCase();
 
-// console.log(greeting.yellow);
+const gui = () => {
+  console.log(greeting.yellow);
+  import("./gui/server.js");
+};
 
 const commandExecutions = {
   "--version": versionCmd,
@@ -32,8 +34,8 @@ const commandExecutions = {
   "--generate": generateCmd,
   "-h": help,
   "--help": help,
-  "--gui": startGUIserver,
-  gui: startGUIserver,
+  "--gui": gui,
+  gui,
 };
 
 const execute = commandExecutions[flag];
@@ -42,5 +44,9 @@ if (!execute) {
   console.log("\nUsage: ".yellow + "ngenly [flag]".cyan);
   help();
 } else {
-  execute();
+  try {
+    execute();
+  } catch (error) {
+    console.log(error);
+  }
 }
