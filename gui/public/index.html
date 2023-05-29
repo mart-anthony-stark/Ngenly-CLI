@@ -10,29 +10,19 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
-    <style>
-      .welcome-banner {
-        background-color: #007bff;
-        color: #ffffff;
-        padding: 20px;
-        text-align: center;
-        font-family: "Pacifico", cursive;
-      }
-
-      .banner-title {
-        font-size: 40px;
-        margin-bottom: 10px;
-      }
-
-      .banner-description {
-        font-size: 20px;
-        margin-bottom: 0;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link rel="stylesheet" href="/public/app.css" />
 
     <title>Ngenly CRUD Generator</title>
   </head>
   <body>
+    <div id="overlay" class="overlay"></div>
+    <div id="spinner" class="spinner"></div>
+
     <nav class="navbar navbar-expand-lg bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand text-white" href="/">Ngenly</a>
@@ -86,15 +76,35 @@
               provides a robust set of features for web and mobile applications.
             </p>
             <div>
-              <button type="button" class="btn btn-warning">JS</button>
-              <button type="button" class="btn btn-warning">
+              <button
+                onclick="generateProject('expressjs')"
+                type="button"
+                class="btn btn-warning"
+              >
+                JS
+              </button>
+              <button
+                onclick="generateProject('expressjs_mongo')"
+                type="button"
+                class="btn btn-warning"
+              >
                 JS with MongoDB
               </button>
             </div>
 
             <div class="my-2">
-              <button type="button" class="btn btn-primary">TS</button>
-              <button type="button" class="btn btn-primary">
+              <button
+                onclick="generateProject('expressts')"
+                type="button"
+                class="btn btn-primary"
+              >
+                TS
+              </button>
+              <button
+                onclick="generateProject('expressts_mongo')"
+                type="button"
+                class="btn btn-primary"
+              >
                 TS with MongoDB
               </button>
             </div>
@@ -111,15 +121,35 @@
               provides a robust set of features for web and mobile applications.
             </p>
             <div>
-              <button type="button" class="btn btn-warning">JS</button>
-              <button type="button" class="btn btn-warning">
+              <button
+                onclick="generateProject('fastifyjs')"
+                type="button"
+                class="btn btn-warning"
+              >
+                JS
+              </button>
+              <button
+                onclick="generateProject('fastifyjs_mongo')"
+                type="button"
+                class="btn btn-warning"
+              >
                 JS with MongoDB
               </button>
             </div>
 
             <div class="my-2">
-              <button type="button" class="btn btn-primary">TS</button>
-              <button type="button" class="btn btn-primary">
+              <button
+                onclick="generateProject('fastifyts')"
+                type="button"
+                class="btn btn-primary"
+              >
+                TS
+              </button>
+              <button
+                onclick="generateProject('fastifyts_mongo')"
+                type="button"
+                class="btn btn-primary"
+              >
                 TS with MongoDB
               </button>
             </div>
@@ -133,5 +163,11 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+
+    <script src="/public/app.js"></script>
   </body>
 </html>
