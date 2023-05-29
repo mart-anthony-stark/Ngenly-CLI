@@ -14,13 +14,13 @@ fastify.register(fastifyStatic, {
   prefix: "/public/", // optional: default '/'
   //   constraints: { host: "example.com" }, // optional: default {}
 });
+
 fastify.listen({ port: PORT }, (err, address) => {
   if (err) {
     console.log(err);
     process.exit(1);
   }
   console.log(`Server running on ${address}`);
-  console.log(__dirname);
 });
 
 fastify.get("/", (req, reply) => {
