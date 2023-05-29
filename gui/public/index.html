@@ -23,6 +23,7 @@
     <div id="overlay" class="overlay"></div>
     <div id="spinner" class="spinner"></div>
 
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand text-white" href="/">Ngenly</a>
@@ -51,18 +52,30 @@
         </div>
       </div>
     </nav>
+
+    <!-- BANNER -->
     <div class="welcome-banner">
       <h1 class="banner-title">Ngenly</h1>
-      <p class="banner-description">Discover the possibilities!</p>
+      <p class="banner-description">Node boilerplate and CRUD API generator</p>
+      <p class="banner-description">By: <span> Mart Anthony Salazar</span></p>
     </div>
 
     <div class="main px-3 py-3">
       <h3>Create new Project</h3>
+      <div class="col-4 mb-2">
+        <label for="projname" class="form-label">Project Name</label>
+        <input type="text" class="form-control" id="projname" />
+      </div>
 
       <div class="card-container d-flex gap-3">
         <!-- EXPRESS -->
         <div class="card" style="width: 18rem">
           <div class="card-body">
+            <img
+              class="lib-logo"
+              src="/public/Expressjs.png"
+              alt="Express.js"
+            />
             <h5 class="card-title">Express</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
             <p class="card-text">
@@ -108,6 +121,11 @@
         <!-- FASTIFY -->
         <div class="card" style="width: 18rem">
           <div class="card-body">
+            <img
+              class="lib-logo"
+              src="/public/fastifyjs.png"
+              alt="Fastify.js"
+            />
             <h5 class="card-title">Fastify</h5>
             <!-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> -->
             <p class="card-text">
