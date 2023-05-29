@@ -30,6 +30,9 @@ fastify.get("/", (req, reply) => {
   reply.sendFile("index.html");
 });
 
+/**
+ * Generate Project
+ */
 fastify.post("/generate-project", (req, reply) => {
   const { library, projname } = req.body;
   const templatesMap = {
@@ -46,7 +49,6 @@ fastify.post("/generate-project", (req, reply) => {
     fastifyts_mongo:
       templates.typescript.fastify["mongodb (mongoose)"].auth.link,
   };
-
   exec(
     `npx degit ${templatesMap[library]} ${projname}`,
     (error, stdout, output) => {
