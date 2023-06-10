@@ -15,19 +15,25 @@ npm install -g ngenly
 - execute in terminal
   ngenly [command]
 
-### Commands
+## Commands
 
-- Create a new project
+### Create a new project
 
 ```console
 ngenly new
 ```
+![Alt text](image-1.png)
+Project Boilerplate will be created with its own folder
+![Alt text](image-2.png)
 
-- Generate CRUD files
+### Generate CRUD files
+Usage: ngenly -g crud [expressjs | expressts | fastifyjs | fastifyts] [model_name]
 
-```console
-ngenly -g crud [expressjs | expressts] [model_name]
 ```
+ngenly -g crud expressjs user
+```
+
+![Generate CRUD](image.png)
 
 - View the cli version
 
