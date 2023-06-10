@@ -22,12 +22,21 @@ npm install -g ngenly
 ```console
 ngenly new
 ```
+
 ![Alt text](image-1.png)
-Project Boilerplate will be created with its own folder
-![Alt text](image-2.png)
+
+- Project Boilerplate will be created with its own folder
+  ![Alt text](image-2.png)
+  > You can also generate project boilerplate with one-liner command
+  > Usage: ngenly -g project [expressjs | expressts | fastifyjs | fastifyts] [projectName]
+
+```console
+ngenly -g project expressjs School-Management-API
+```
 
 ### Generate CRUD files
-Usage: ngenly -g crud [expressjs | expressts | fastifyjs | fastifyts] [model_name]
+
+> Usage: ngenly -g crud [expressjs | expressts | fastifyjs | fastifyts] [model_name]
 
 ```
 ngenly -g crud expressjs user
