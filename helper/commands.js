@@ -6,6 +6,7 @@ import colors from "colors";
 import { argv } from "process";
 import generateCRUD from "../crud/index.js";
 import { generateMenu } from "../crud/menu.js";
+import generateProject from "../src/generator.js";
 const pjson = require("../package.json");
 
 export const help = () => {
@@ -47,8 +48,10 @@ export const generateCmd = () => {
     );
   } else {
     if (argv[3] == "crud") {
-      const isAuto = (typeof argv[6] !== 'undefined' && argv[6]==="--auto")
+      const isAuto = typeof argv[6] !== "undefined" && argv[6] === "--auto";
       generateCRUD(argv[4], argv[5], isAuto);
+    } else if (argv[3] == "project") {
+      generateProject({ lib: argv[4], name: argv[5] });
     }
   }
 };
