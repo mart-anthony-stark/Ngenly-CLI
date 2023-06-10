@@ -3,13 +3,13 @@ export const expressRouteTemplate = (name) => {
   return `
 const router = require("express").Router();
 const ${name.toLowerCase()}Controller = require("../controllers/${name.toLowerCase()}.controller");
-const {catcher} = require("../utils")
+const {catcher} = require("../utils/helper")
 
-router.get("/", ${name.toLowerCase()}Controller.getAll);
-router.get("/:id", ${name.toLowerCase()}Controller.getOne);
-router.post("/", ${name.toLowerCase()}Controller.createOne);
-router.put("/:id", ${name.toLowerCase()}Controller.updateOne);
-router.delete("/:id", ${name.toLowerCase()}Controller.deleteOne);
+router.get("/", catcher(${name.toLowerCase()}Controller.getAll));
+router.get("/:id", catcher(${name.toLowerCase()}Controller.getOne));
+router.post("/", catcher(${name.toLowerCase()}Controller.createOne));
+router.put("/:id", catcher(${name.toLowerCase()}Controller.updateOne));
+router.delete("/:id", catcher(${name.toLowerCase()}Controller.deleteOne));
 
 module.exports = router;`;
 };
