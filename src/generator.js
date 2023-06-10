@@ -37,8 +37,16 @@ const questions = [
   },
 ];
 
-const generateProject = () => {
-  console.log(greeting)
+const generateProject = (details) => {
+  console.log(greeting);
+  if (details) {
+    const languages = { ts: "typescript", js: "javascript" };
+    const lang = languages[details.lib.slice(-2)];
+    const t =
+      templates[lang][details.lib.slice(0, -2)]["mongodb (mongoose)"][`auth`];
+    download(t, details.name);
+    return;
+  }
   inquirer.prompt(questions).then(({ name, framework, lang, db }) => {
     let t = templates[lang][framework][db];
     if (db !== "none") {
