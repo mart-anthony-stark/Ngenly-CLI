@@ -37,7 +37,7 @@ const generateProject = async (library) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         library,
-        projname: projnameInput.value,
+        projname: "./",
       }),
     });
     const data = await res.json();

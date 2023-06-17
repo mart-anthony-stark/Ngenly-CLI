@@ -8,7 +8,7 @@ import templates from "../src/templates.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PORT = process.env.PORT || 7000;
+const PORT = 7000;
 const fastify = Fastify();
 
 fastify.register(fastifyStatic, {

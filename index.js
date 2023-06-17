@@ -6,6 +6,7 @@ const require = createRequire(import.meta.url);
 const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
 import { generateCmd, help, versionCmd } from "./helper/commands.js";
+import { openLink } from "./helper/index.js";
 
 export const greeting = ` _   _                  _       
 | \ | |                | |      
@@ -23,6 +24,7 @@ const flag = !argv[2] ? "--gui" : argv[2].toLowerCase();
 const gui = () => {
   console.log(greeting.yellow);
   import("./gui/server.js");
+  openLink("http://[::1]:7000/");
 };
 
 const commandExecutions = {
