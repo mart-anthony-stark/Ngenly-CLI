@@ -3,9 +3,9 @@
 A node project boilerplate generator
 
 - [Installation](#installation)
+- [Commands](#commands)
 - [Create New Project](#create-a-new-project)
 - [Generate CRUD files](#generate-crud-files)
-- [Commands](#commands)
 
 ## Installation
 
@@ -19,6 +19,18 @@ npm install -g ngenly
 
 - execute in terminal
   ngenly [command]
+
+## Commands
+
+| Command                             | Description                                      |
+| ----------------------------------- | ------------------------------------------------ |
+| `ngenly new`                        | Generates a new project                          |
+| `ngenly upgrade`                    | Installs the latest version of ngenly globally   |
+| `ngenly [-g / generate]`            | Starts generating project or crud using menu     |
+| `ngenly -v`                         | Returns cli version                              |
+| `ngenly --version`                  | Returns cli version                              |
+| `ngenly -g [crud] [library] [name]` | Generates crud files (Model, Controller, Router) |
+| `ngenly --gui`                      | Opens the browser for ngenly GUI                 |
 
 ## Create a new project
 
@@ -52,14 +64,3 @@ ngenly -g crud expressjs user
 ```console
 ngenly -v
 ```
-
-## Commands
-
-| Command                             | Description                                      |
-| ----------------------------------- | ------------------------------------------------ |
-| `ngenly new`                        | Generates a new project                          |
-| `ngenly [-g / generate]`            | Starts generating project or crud using menu     |
-| `ngenly -v`                         | Returns cli version                              |
-| `ngenly --version`                  | Returns cli version                              |
-| `ngenly -g [crud] [library] [name]` | Generates crud files (Model, Controller, Router) |
-| `ngenly --gui`                      | Opens the browser for ngenly GUI                 |
