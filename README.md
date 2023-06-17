@@ -58,9 +58,3 @@ ngenly -g crud expressjs user
 ```
 
 ![Generate CRUD](image.png)
-
-- View the cli version
-
-```console
-ngenly -v
-```
