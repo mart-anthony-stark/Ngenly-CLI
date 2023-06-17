@@ -6,6 +6,7 @@ A node project boilerplate generator
 - [Commands](#commands)
 - [Create New Project](#create-a-new-project)
 - [Generate CRUD files](#generate-crud-files)
+- [GUI](#ngenly-gui)
 
 ## Installation
 
@@ -58,3 +59,21 @@ ngenly -g crud expressjs user
 ```
 
 ![Generate CRUD](image.png)
+
+## Ngenly GUI
+
+Ngenly GUI is a new feature introduced in version 3.0.0 of the Ngenly CLI tool. It provides a graphical user interface (GUI) for easier interaction with Ngenly and its functionalities.
+
+As of now, the Ngenly GUI primarily includes the "Create Project" feature, allowing users to generate a new project with a few simple steps through the graphical interface. However, please note that additional features, such as creating models, routes, and controllers are planned to be added in future updates. These enhancements will further empower developers to efficiently generate and manage their projects using the Ngenly CLI tool.
+
+Stay tuned for updates as more features are incorporated into the Ngenly GUI to enhance your development experience.
+
+- Command for starting gui local server
+> You need to be in an empty directory (your desired new project directory).
+```
+ngenly --gui
+```
+- Or you can also just enter `ngenly` command and the GUI will start
+![Alt text](image-3.png)
+
+> Note: Creating a new project with Ngenly requires an internet connection as it involves cloning a boilerplate from a hosted git repository. However, generating CRUD files (Model, Route, Controller) can be done offline without the need for an internet connection.
