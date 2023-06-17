@@ -1,4 +1,5 @@
-# Ngenly CLI
+# Ngenly CLI 
+[![https://nodei.co/npm/ngenly.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/ngenly.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/ngenly)
 
 A node project boilerplate generator
 
