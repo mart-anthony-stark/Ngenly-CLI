@@ -2,6 +2,11 @@
 
 A node project boilerplate generator
 
+[Installation](#installation)
+[Create New Project](#create-a-new-project)
+[Generate CRUD files](#generate-crud-files)
+[Commands](#commands)
+
 ## Installation
 
 Install the package globally using yarn or npm
@@ -15,9 +20,7 @@ npm install -g ngenly
 - execute in terminal
   ngenly [command]
 
-## Commands
-
-### Create a new project
+## Create a new project
 
 ```console
 ngenly new
@@ -34,7 +37,7 @@ ngenly new
 ngenly -g project expressjs School-Management-API
 ```
 
-### Generate CRUD files
+## Generate CRUD files
 
 > Usage: ngenly -g crud [expressjs | expressts | fastifyjs | fastifyts] [model_name]
 
