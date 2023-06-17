@@ -11,26 +11,26 @@ function hideSpinner() {
   overlay.style.display = "none";
   spinner.style.display = "none";
 }
-const projnameInput = document.querySelector("#projname");
+// const projnameInput = document.querySelector("#projname");
 
 const generateProject = async (library) => {
   try {
-    if (!projnameInput.value || projnameInput.value === "") {
-      Toastify({
-        text: "Project Name must be filled!",
-        duration: 3000,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-          background:
-            "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 35%, rgba(255,0,0,1) 100%)",
-        },
-        onClick: function () {}, // Callback after click
-      }).showToast();
-      return;
-    }
+    // if (!projnameInput.value || projnameInput.value === "") {
+    //   Toastify({
+    //     text: "Project Name must be filled!",
+    //     duration: 3000,
+    //     close: true,
+    //     gravity: "top", // `top` or `bottom`
+    //     position: "left", // `left`, `center` or `right`
+    //     stopOnFocus: true, // Prevents dismissing of toast on hover
+    //     style: {
+    //       background:
+    //         "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 35%, rgba(255,0,0,1) 100%)",
+    //     },
+    //     onClick: function () {}, // Callback after click
+    //   }).showToast();
+    //   return;
+    // }
     showSpinner();
     const res = await fetch("/generate-project", {
       method: "POST",

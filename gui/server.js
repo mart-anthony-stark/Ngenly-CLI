@@ -50,10 +50,10 @@ fastify.post("/generate-project", (req, reply) => {
       templates.typescript.fastify["mongodb (mongoose)"].auth.link,
   };
   exec(
-    `npx degit ${templatesMap[library]} ${projname}`,
+    `npx degit ${templatesMap[library]} ${projname} --force`,
     (error, stdout, output) => {
       if (error) {
-        reply.send(error);
+        reply.status(500).send(error);
         console.log(error);
       }
       console.log("Generated Project");
