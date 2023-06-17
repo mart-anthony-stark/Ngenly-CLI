@@ -6,7 +6,7 @@ const require = createRequire(import.meta.url);
 const version = require("./package.json").version;
 import generateProject from "./src/generator.js";
 import { generateCmd, help, versionCmd } from "./helper/commands.js";
-import { openLink } from "./helper/index.js";
+import { openLink, upgrade } from "./helper/index.js";
 
 export const greeting = ` _   _                  _       
 | \ | |                | |      
@@ -38,6 +38,7 @@ const commandExecutions = {
   "--help": help,
   "--gui": gui,
   gui,
+  upgrade,
 };
 
 const execute = commandExecutions[flag];

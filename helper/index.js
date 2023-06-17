@@ -1,4 +1,7 @@
 import { exec } from "child_process";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const pjson = require("../package.json");
 
 export function openLink(url) {
   let command;
@@ -21,5 +24,16 @@ export function openLink(url) {
       console.error(`Failed to open link: ${error.message}`);
       return;
     }
+  });
+}
+
+export function upgrade() {
+  exec(`npm i -g ngenly@latest`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(error.message);
+      return;
+    }
+    console.log("UPGRADED".bgGreen + " Ngenly API and CRUD generator");
+    console.log("Current version: " + pjson.version.cyan);
   });
 }
