@@ -2,10 +2,10 @@
 
 A node project boilerplate generator
 
-[Installation](#installation)
-[Create New Project](#create-a-new-project)
-[Generate CRUD files](#generate-crud-files)
-[Commands](#commands)
+- [Installation](#installation)
+- [Create New Project](#create-a-new-project)
+- [Generate CRUD files](#generate-crud-files)
+- [Commands](#commands)
 
 ## Installation
 
