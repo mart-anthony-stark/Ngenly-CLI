@@ -28,12 +28,15 @@ export function openLink(url) {
 }
 
 export function upgrade() {
+  console.log("Current version: " + pjson.version.cyan);
+  console.log("Running `npm i -g ngenly@latest`".bgBlue);
   exec(`npm i -g ngenly@latest`, (error, stdout, stderr) => {
     if (error) {
       console.error(error.message);
       return;
     }
+    console.log(stdout);
     console.log("UPGRADED".bgGreen + " Ngenly API and CRUD generator");
-    console.log("Current version: " + pjson.version.cyan);
+    console.log("made with 💗 by Mart Salazar");
   });
 }
