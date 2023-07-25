@@ -51,9 +51,9 @@ const generateCRUD = async (library, name, isAuto) => {
   if (!templates[library]) {
     console.log("Invalid library selection".red);
     console.log("Available library templates:".green);
-    console.log("\t- expressjs".blue);
-    console.log("\t- expressts".blue);
-    console.log("\t- fastifyjs".blue);
+    for (let lib in templates) {
+      console.log(`\t- ${lib}`.blue);
+    }
     return;
   }
 
