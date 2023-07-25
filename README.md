@@ -1,4 +1,5 @@
-# Ngenly CLI 
+# Ngenly CLI
+
 [![https://nodei.co/npm/ngenly.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/ngenly.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/ngenly)
 
 A node project boilerplate generator
@@ -24,15 +25,15 @@ npm install -g ngenly
 
 ## Commands
 
-| Command                             | Description                                      |
-| ----------------------------------- | ------------------------------------------------ |
-| `ngenly new`                        | Generates a new project                          |
-| `ngenly upgrade`                    | Installs the latest version of ngenly globally   |
-| `ngenly [-g / generate]`            | Starts generating project or crud using menu     |
-| `ngenly -v`                         | Returns cli version                              |
-| `ngenly --version`                  | Returns cli version                              |
-| `ngenly -g [crud] [library] [name]` | Generates crud files (Model, Controller, Router) |
-| `ngenly --gui`                      | Opens the browser for ngenly GUI                 |
+| Command                                | Description                                      |
+| -------------------------------------- | ------------------------------------------------ |
+| `ngenly new`                           | Generates a new project                          |
+| `ngenly upgrade`                       | Installs the latest version of ngenly globally   |
+| `ngenly [g / generate]`                | Starts generating project or crud using menu     |
+| `ngenly -v`                            | Returns cli version                              |
+| `ngenly --version`                     | Returns cli version                              |
+| `ngenly g [resource] [library] [name]` | Generates crud files (Model, Controller, Router) |
+| `ngenly --gui`                         | Opens the browser for ngenly GUI                 |
 
 ## Create a new project
 
@@ -70,11 +71,13 @@ As of now, the Ngenly GUI primarily includes the "Create Project" feature, allow
 Stay tuned for updates as more features are incorporated into the Ngenly GUI to enhance your development experience.
 
 - Command for starting gui local server
-> You need to be in an empty directory (your desired new project directory).
+  > You need to be in an empty directory (your desired new project directory).
+
 ```
 ngenly --gui
 ```
+
 - Or you can also just enter `ngenly` command and the GUI will start
-![Alt text](image-3.png)
+  ![Alt text](image-3.png)
 
 > Note: Creating a new project with Ngenly requires an internet connection as it involves cloning a boilerplate from a hosted git repository. However, generating CRUD files (Model, Route, Controller) can be done offline without the need for an internet connection.

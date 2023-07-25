@@ -47,7 +47,7 @@ export const generateCmd = () => {
       "Usage: ngenly -g [crud] [library: express | fastify] [route_name]".yellow
     );
   } else {
-    if (argv[3] == "crud") {
+    if (argv[3] == "crud" || argv[3] == "resource") {
       const isAuto = typeof argv[6] !== "undefined" && argv[6] === "--auto";
       generateCRUD(argv[4], argv[5], isAuto);
     } else if (argv[3] == "project") {

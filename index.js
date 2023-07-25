@@ -32,6 +32,7 @@ const commandExecutions = {
   "-v": versionCmd,
   new: generateProject,
   "-n": generateProject,
+  g: generateCmd,
   "-g": generateCmd,
   "--generate": generateCmd,
   "-h": help,
