@@ -92,10 +92,11 @@ const generateCRUD = async (library, name, isAuto) => {
 const generateFile = (dir, name, content, extension) => {
   // Directory mapping for each ext (js/ts)
   const dirMap = {
-    js: dir,
-    ts: `src/${dir}`,
+    js: "app",
+    ts: `src/app`,
   };
-  const dirToBeCreated = __dirname + `/${dirMap[extension]}s`;
+  const dirToBeCreated =
+    __dirname + `/${dirMap[extension]}/${name.toLowerCase()}`;
 
   fs.mkdir(dirToBeCreated, { recursive: true }, (err) => {
     if (err) throw err;
@@ -128,13 +129,14 @@ const generateFile = (dir, name, content, extension) => {
  * @description Adds the created router to app entry point middleware.
  */
 const addRouteToMain = (name, ext, library) => {
+  const resourceName = name.toLowerCase();
   const mainAppendString = {
-    expressjs: `app.use("/${name.toLowerCase()}", require("./routes/${name.toLowerCase()}.route"));`,
+    expressjs: `app.use("/${resourceName}", require("./app/${resourceName}/${resourceName}.route"));`,
     expressts: `
-import ${name.toLowerCase()}Router from "./routes/${name.toLowerCase()}.route";
-app.use("/${name.toLowerCase()}", ${name.toLowerCase()}Router);`,
+import ${resourceName}Router from "./app/${resourceName}/${resourceName}.route";
+app.use("/${resourceName}", ${resourceName}Router);`,
     fastifyjs: `
-    fastify.register(require("./routes/${name.toLowerCase()}.route"), { prefix: "/${name.toLowerCase()}" });
+    fastify.register(require("./routes/${resourceName}.route"), { prefix: "/${resourceName}" });
     `,
   };
 
