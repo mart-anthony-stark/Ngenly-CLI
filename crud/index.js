@@ -130,14 +130,14 @@ const generateFile = (dir, name, content, extension) => {
  */
 const addRouteToMain = (name, ext, library) => {
   const resourceName = name.toLowerCase();
+  const capitalizedResourceName =
+    resourceName.charAt(0).toUpperCase() + resourceName.slice(1);
   const mainAppendString = {
     expressjs: `
 app.use("/${resourceName}", require("./app/${resourceName}/${resourceName}.controller"));`,
     expressts: `
-import ${
-      resourceName.charAt(0).toUpperCase() + resourceName.slice(1)
-    }Controller from "./app/${resourceName}/${resourceName}.controller";
-app.use("/${resourceName}", ${resourceName}Controller);`,
+import ${capitalizedResourceName}Controller from "./app/${resourceName}/${resourceName}.controller";
+app.use("/${resourceName}", ${capitalizedResourceName}Controller);`,
     fastifyjs: `
 fastify.register(require("./routes/${resourceName}.controller"), { prefix: "/${resourceName}" });
     `,

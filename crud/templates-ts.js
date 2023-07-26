@@ -34,11 +34,9 @@ const ${name.charAt(0).toUpperCase() + name.slice(1)}Schema = new Schema(
     { timestamps: true }
   );
 
-export const ${
+export const ${name.charAt(0).toUpperCase() + name.slice(1)}Model = model("${
     name.charAt(0).toUpperCase() + name.slice(1)
-  }Model = mongoose.model("${name.charAt(0).toUpperCase() + name.slice(1)}", ${
-    name.charAt(0).toUpperCase() + name.slice(1)
-  }Schema);
+  }", ${name.charAt(0).toUpperCase() + name.slice(1)}Schema);
 `;
 };
 
