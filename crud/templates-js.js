@@ -1,15 +1,15 @@
 // ROUTER TEMPLATE FOR EXPRESS.JS
-export const expressRouteTemplate = (name) => {
+export const expressControllerTemplate = (name) => {
   return `
 const router = require("express").Router();
-const ${name.toLowerCase()}Controller = require("./${name.toLowerCase()}.controller");
+const ${name.toLowerCase()}Service = require("./${name.toLowerCase()}.service");
 const {catcher} = require("../../utils/helper")
 
-router.get("/", catcher(${name.toLowerCase()}Controller.getAll));
-router.get("/:id", catcher(${name.toLowerCase()}Controller.getOne));
-router.post("/", catcher(${name.toLowerCase()}Controller.createOne));
-router.put("/:id", catcher(${name.toLowerCase()}Controller.updateOne));
-router.delete("/:id", catcher(${name.toLowerCase()}Controller.deleteOne));
+router.get("/", catcher(${name.toLowerCase()}Service.getAll));
+router.get("/:id", catcher(${name.toLowerCase()}Service.getOne));
+router.post("/", catcher(${name.toLowerCase()}Service.createOne));
+router.put("/:id", catcher(${name.toLowerCase()}Service.updateOne));
+router.delete("/:id", catcher(${name.toLowerCase()}Service.deleteOne));
 
 module.exports = router;`;
 };
@@ -40,7 +40,7 @@ module.exports = mongoose.model("${
 };
 
 // CONTROLLER TEMPLATE FOR EXPRESS.JS
-export const expressControllerTemplate = (name) => {
+export const expressServiceTemplate = (name) => {
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
   return `const ${capitalName} = require("./${name.toLowerCase()}.model");
 

@@ -1,18 +1,18 @@
 import fs from "fs";
 import path from "path";
 import {
-  expressRouteTemplate,
-  expressModelTemplate,
   expressControllerTemplate,
+  expressModelTemplate,
+  expressServiceTemplate,
   fastifyjsRouteTemplate,
   fastifyjsModelTemplate,
   fastifyControllerTemplate,
 } from "./templates-js.js";
 
 import {
-  expressTSControllerTemplate,
+  expressTSServiceTemplate,
   expressTSModelTemplate,
-  expressTSRouteTemplate,
+  expressTSControllerTemplate,
 } from "./templates-ts.js";
 import colors from "colors";
 import { createModel } from "../helper/mongoose-helper.js";
@@ -22,19 +22,19 @@ import { greeting } from "../index.js";
 const loader = new Loader();
 const templates = {
   expressjs: {
-    route: expressRouteTemplate,
-    model: expressModelTemplate,
     controller: expressControllerTemplate,
+    model: expressModelTemplate,
+    service: expressServiceTemplate,
   },
   expressts: {
-    route: expressTSRouteTemplate,
-    model: expressTSModelTemplate,
     controller: expressTSControllerTemplate,
+    model: expressTSModelTemplate,
+    service: expressTSServiceTemplate,
   },
   fastifyjs: {
-    route: fastifyjsRouteTemplate,
+    controller: fastifyjsRouteTemplate,
     model: fastifyjsModelTemplate,
-    controller: fastifyControllerTemplate,
+    service: fastifyControllerTemplate,
   },
 };
 
@@ -59,13 +59,13 @@ const generateCRUD = async (library, name, isAuto) => {
 
   console.log(greeting.yellow);
 
-  const routeTemplate = templates[library]["route"];
-  const modelTemplate = templates[library]["model"];
   const controllerTemplate = templates[library]["controller"];
+  const modelTemplate = templates[library]["model"];
+  const serviceTemplate = templates[library]["service"];
   const ext = library.slice(library.length - 2);
 
   // Generate files
-  generateFile("route", name, routeTemplate(name), ext);
+  generateFile("controller", name, controllerTemplate(name), ext);
 
   // Check if arg automatic schema generation
   if (isAuto) {
@@ -75,7 +75,7 @@ const generateCRUD = async (library, name, isAuto) => {
     generateFile("model", name, modelTemplate(name), ext);
   }
 
-  generateFile("controller", name, controllerTemplate(name), ext);
+  generateFile("service", name, serviceTemplate(name), ext);
   addRouteToMain(name, ext, library);
   addRoutesToDocumentation(name);
 };
@@ -131,12 +131,15 @@ const generateFile = (dir, name, content, extension) => {
 const addRouteToMain = (name, ext, library) => {
   const resourceName = name.toLowerCase();
   const mainAppendString = {
-    expressjs: `app.use("/${resourceName}", require("./app/${resourceName}/${resourceName}.route"));`,
+    expressjs: `
+app.use("/${resourceName}", require("./app/${resourceName}/${resourceName}.controller"));`,
     expressts: `
-import ${resourceName}Router from "./app/${resourceName}/${resourceName}.route";
-app.use("/${resourceName}", ${resourceName}Router);`,
+import ${
+      resourceName.charAt(0).toUpperCase() + resourceName.slice(1)
+    }Controller from "./app/${resourceName}/${resourceName}.controller";
+app.use("/${resourceName}", ${resourceName}Controller);`,
     fastifyjs: `
-    fastify.register(require("./routes/${resourceName}.route"), { prefix: "/${resourceName}" });
+fastify.register(require("./routes/${resourceName}.controller"), { prefix: "/${resourceName}" });
     `,
   };
 

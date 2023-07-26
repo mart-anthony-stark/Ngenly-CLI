@@ -1,17 +1,19 @@
 // ROUTER TEMPLATE FOR EXPRESS.JS
-export const expressTSRouteTemplate = (name) => {
+export const expressTSControllerTemplate = (name) => {
+  const controllerName = `${
+    name.charAt(0).toUpperCase() + name.slice(1)
+  }Controller`;
   return `import { Router } from "express";
-import { catcher } from "../../utils";
-import ${name.toLowerCase()}Controller from "./${name.toLowerCase()}.controller";
-const router = Router();
+import ${name.toLowerCase()}Controller from "./${name.toLowerCase()}.service";
+const ${controllerName} = Router();
 
-router.get("/", catcher(${name.toLowerCase()}Controller.getAll));
-router.get("/:id", catcher(${name.toLowerCase()}Controller.getOne));
-router.post("/", catcher(${name.toLowerCase()}Controller.createOne));
-router.put("/:id", catcher(${name.toLowerCase()}Controller.updateOne));
-router.delete("/:id", catcher(${name.toLowerCase()}Controller.deleteOne));
+${controllerName}.get("/", ${name.toLowerCase()}Controller.getAll);
+${controllerName}.get("/:id", ${name.toLowerCase()}Controller.getOne);
+${controllerName}.post("/", ${name.toLowerCase()}Controller.createOne);
+${controllerName}.put("/:id", ${name.toLowerCase()}Controller.updateOne);
+${controllerName}.delete("/:id", ${name.toLowerCase()}Controller.deleteOne);
 
-export default router;`;
+export default ${controllerName};`;
 };
 
 // MONGOOSE MODEL TEMPLATE FOR EXPRESS.JS
@@ -40,31 +42,37 @@ export const ${
 `;
 };
 
-// CONTROLLER TEMPLATE FOR EXPRESS.JS
-export const expressTSControllerTemplate = (name) => {
+// Service TEMPLATE FOR EXPRESS.JS
+export const expressTSServiceTemplate = (name) => {
   const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
   return `import type { Request, Response } from "express";
+import {Handler, Service} from "../../utils/decorators"
 import {${capitalName}Model} from "./${name.toLowerCase()}.model";
 
-export default {
+@Service
+class ${capitalName}Service {
   // GET ALL DATA
-  getAll: async (req:Request, res:Response) => {
+  @Handler()
+  async getAll (req:Request, res:Response) {
     const ${name.toLowerCase()}s = await ${capitalName}Model.find();
     res.send(${name.toLowerCase()}s);
-  },
+  }
   // GET ONE DATA
-  getOne: async (req:Request, res:Response) => {
+  @Handler()
+  async getOne (req:Request, res:Response) {
     const ${name.toLowerCase()} = await ${capitalName}Model.findOne({ _id: req.params.id });
     res.send(${name.toLowerCase()})
-  },
+  }
   // CREATE DATA
-  createOne: async (req:Request,res:Response) => {
+  @Handler()
+  async createOne (req:Request,res:Response) {
     const new${capitalName} = new ${capitalName}Model(req.body)
     await new${capitalName}.save()
     res.send(new${capitalName})
-  },
+  }
   // UPDATE DATA
-  updateOne: async (req:Request, res:Response) => {
+  @Handler()
+  async updateOne (req:Request, res:Response) {
     const ${name.toLowerCase()} = await ${capitalName}Model.findOneAndUpdate(
       { _id: req.params.id },
       { $set: req.body },
@@ -72,12 +80,15 @@ export default {
     );
 
     res.send(${name.toLowerCase()})
-  },
+  }
   // DELETE DATA
-  deleteOne: async (req:Request, res:Response) => {
+  @Handler()
+  async deleteOne (req:Request, res:Response) {
     const ${name.toLowerCase()} = await ${capitalName}Model.findByIdAndRemove(req.params.id);
     res.send(${name.toLowerCase()});
-  },
+  }
 };
+
+export default new ${capitalName}Service();
 `;
 };
