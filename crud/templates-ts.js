@@ -4,14 +4,14 @@ export const expressTSControllerTemplate = (name) => {
     name.charAt(0).toUpperCase() + name.slice(1)
   }Controller`;
   return `import { Router } from "express";
-import ${name.toLowerCase()}Controller from "./${name.toLowerCase()}.service";
+import ${name.toLowerCase()}Service from "./${name.toLowerCase()}.service";
 const ${controllerName} = Router();
 
-${controllerName}.get("/", ${name.toLowerCase()}Controller.getAll);
-${controllerName}.get("/:id", ${name.toLowerCase()}Controller.getOne);
-${controllerName}.post("/", ${name.toLowerCase()}Controller.createOne);
-${controllerName}.put("/:id", ${name.toLowerCase()}Controller.updateOne);
-${controllerName}.delete("/:id", ${name.toLowerCase()}Controller.deleteOne);
+${controllerName}.get("/", ${name.toLowerCase()}Service.getAll);
+${controllerName}.get("/:id", ${name.toLowerCase()}Service.getOne);
+${controllerName}.post("/", ${name.toLowerCase()}Service.createOne);
+${controllerName}.put("/:id", ${name.toLowerCase()}Service.updateOne);
+${controllerName}.delete("/:id", ${name.toLowerCase()}Service.deleteOne);
 
 export default ${controllerName};`;
 };
