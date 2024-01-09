@@ -35,6 +35,9 @@ fastify.get("/", (req, reply) => {
  */
 fastify.post("/generate-project", (req, reply) => {
   const { library, projname } = req.body;
+  const newDir = path.dirname("") + "/" + projname;
+  console.log(newDir);
+
   const templatesMap = {
     expressjs: templates.javascript.express.none.link,
     expressts: templates.typescript.express.none.link,
@@ -59,18 +62,15 @@ fastify.post("/generate-project", (req, reply) => {
         console.log(error);
       } else {
         console.log("Generated Project");
-        exec(
-          `cd ${__dirname + projname} && npm install`,
-          (err, stdout, output) => {
-            if (err) {
-              reply.status(500).send(err);
-              console.log(err);
-            } else {
-              console.log("Installed dependencies");
-            }
-            reply.send({ msg: "Generated the project successfully" });
+        exec(`cd ${newDir} && npm install`, (err, stdout, output) => {
+          if (err) {
+            reply.status(500).send(err);
+            console.log(err);
+          } else {
+            console.log("Installed dependencies");
           }
-        );
+          reply.send({ msg: "Generated the project successfully" });
+        });
       }
     }
   );
