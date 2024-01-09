@@ -46,6 +46,9 @@
 .lib-logo {
   width: 100%;
 }
+#projname::placeholder {
+  color: #ffff;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);

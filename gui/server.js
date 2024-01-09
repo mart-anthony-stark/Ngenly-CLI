@@ -57,9 +57,21 @@ fastify.post("/generate-project", (req, reply) => {
       if (error) {
         reply.status(500).send(error);
         console.log(error);
+      } else {
+        console.log("Generated Project");
+        exec(
+          `cd ${__dirname + projname} && npm install`,
+          (err, stdout, output) => {
+            if (err) {
+              reply.status(500).send(error);
+              console.log(error);
+            } else {
+              console.log("Installed dependencies");
+            }
+            reply.send({ msg: "Generated the project successfully" });
+          }
+        );
       }
-      console.log("Generated Project");
-      reply.send({ msg: "Generated the project successfully" });
     }
   );
 });

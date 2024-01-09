@@ -11,17 +11,20 @@ function hideSpinner() {
   overlay.style.display = "none";
   spinner.style.display = "none";
 }
-// const projnameInput = document.querySelector("#projname");
+const projnameInput = document.querySelector("#projname");
 
 const generateProject = async (library, force = false) => {
   try {
+    if (projnameInput.value === null || projnameInput.value === "")
+      throw new Error("Project name cannot be empty");
+
     showSpinner();
     const res = await fetch("/generate-project", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         library,
-        projname: "./",
+        projname: projnameInput.value || "./",
         force,
       }),
     });
@@ -56,9 +59,9 @@ const generateProject = async (library, force = false) => {
               text: `Retrying to generate files...`,
               duration: 3000,
               close: true,
-              gravity: "top", // `top` or `bottom`
-              position: "left", // `left`, `center` or `right`
-              stopOnFocus: true, // Prevents dismissing of toast on hover
+              gravity: "top",
+              position: "right",
+              stopOnFocus: true,
               style: {
                 background: "linear-gradient(to right, #00b09b, #96c93d)",
               },
@@ -74,9 +77,9 @@ const generateProject = async (library, force = false) => {
         text: data.message || "Internal Server Error",
         duration: 3000,
         close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "left", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
         style: {
           background:
             "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 35%, rgba(255,0,0,1) 100%)",
@@ -87,5 +90,18 @@ const generateProject = async (library, force = false) => {
   } catch (error) {
     hideSpinner();
     console.log(error);
+    Toastify({
+      text: error.message || "Internal Server Error",
+      duration: 3000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background:
+          "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 35%, rgba(255,0,0,1) 100%)",
+      },
+      onClick: function () {}, // Callback after click
+    }).showToast();
   }
 };
