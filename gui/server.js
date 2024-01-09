@@ -63,8 +63,8 @@ fastify.post("/generate-project", (req, reply) => {
           `cd ${__dirname + projname} && npm install`,
           (err, stdout, output) => {
             if (err) {
-              reply.status(500).send(error);
-              console.log(error);
+              reply.status(500).send(err);
+              console.log(err);
             } else {
               console.log("Installed dependencies");
             }
