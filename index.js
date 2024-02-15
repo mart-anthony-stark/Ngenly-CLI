@@ -8,15 +8,12 @@ import generateProject from "./src/generator.js";
 import { generateCmd, help, versionCmd } from "./helper/commands.js";
 import { openLink, upgrade } from "./helper/index.js";
 
-export const greeting = ` _   _                  _       
-| \ | |                | |      
-|  \| | __ _  ___ _ __ | |_   _ 
-| . \` |/ _\` |/ _ \ '_ \| | | | |
-| |\  | (_| |  __/ | | | | |_| |
-|\_| \_/\__, |\___|_| |_|_|\__, |
-        __/ |              __/ |
-       |___/              |___/  ${`v${version}`.green}
-${"Node API template and CRUD generator".green}
+export const greeting = `███    ██  ██████  ███████ ███    ██ ██      ██    ██ 
+████   ██ ██       ██      ████   ██ ██       ██  ██  
+██ ██  ██ ██   ███ █████   ██ ██  ██ ██        ████   
+██  ██ ██ ██    ██ ██      ██  ██ ██ ██         ██    
+██   ████  ██████  ███████ ██   ████ ███████    ██ ${`v${version}`.green}
+${"Node Boilerplate and RestAPI generator".green}
 made with 💗 by Mart Salazar       `;
 
 const flag = !argv[2] ? "--gui" : argv[2].toLowerCase();
