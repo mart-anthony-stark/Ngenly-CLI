@@ -24,7 +24,7 @@ const flag = !argv[2] ? "--gui" : argv[2].toLowerCase();
 const gui = () => {
   console.log(greeting.yellow);
   import("./gui/server.js");
-  openLink("http://[::1]:7000/");
+  openLink("http://127.0.0.1:7000/");
 };
 
 const commandExecutions = {
